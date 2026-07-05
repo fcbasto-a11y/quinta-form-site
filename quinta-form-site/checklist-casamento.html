@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Check-list de casamento — Quinta da Aldeia. Preencha os detalhes do seu evento."/>
+  <title>Quinta da Aldeia — Check-list de Casamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#1a4d00;--ink2:#2e6b00;--ink3:#4d7a30;
+      --cream:#f6faf2;--cream2:#e8f5e0;--cream3:#d4ecc4;
+      --border:rgba(26,77,0,0.15);--border2:rgba(26,77,0,0.28);
+      --green-bg:#d4ecc4;
+      --red:#8a2020;--red-bg:#fce8e8;
+      --radius:6px;--radius-lg:12px;
+      --shadow:0 2px 16px rgba(26,77,0,0.10);
+    }
+    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;font-weight:300}
+    .header{background:var(--ink);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,0.2)}
+    .header-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .header img{height:40px;width:auto}
+    .header-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;letter-spacing:0.05em;font-weight:400}
+    .hero{background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);padding:2.5rem 1.5rem;text-align:center}
+    .hero h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#fff;letter-spacing:0.03em;margin-bottom:8px}
+    .hero p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.85;max-width:480px;margin:0 auto}
+    .hero-divider{width:40px;height:1px;background:rgba(255,255,255,0.4);margin:14px auto}
+    .wrap{max-width:640px;margin:0 auto;padding:2rem 1.25rem 5rem}
+    .section{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem;box-shadow:var(--shadow)}
+    .section-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:1.25rem;padding-bottom:8px;border-bottom:1.5px solid var(--cream3);font-weight:500}
+    .fg{margin-bottom:1rem}
+    .fg:last-child{margin-bottom:0}
+    .fg label{display:block;font-size:12px;color:var(--ink3);margin-bottom:5px;letter-spacing:0.02em}
+    .fg input,.fg select,.fg textarea{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink);font-family:'Jost',sans-serif;font-size:13px;font-weight:300;transition:border-color 0.15s;-webkit-appearance:none}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--ink2);box-shadow:0 0 0 2px rgba(46,107,0,0.08)}
+    .fg textarea{resize:vertical;min-height:80px;line-height:1.6}
+    .fg .hint{font-size:11px;color:var(--ink3);margin-top:5px;line-height:1.6;background:var(--cream2);border-radius:4px;padding:5px 8px;border-left:2px solid var(--ink2)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:460px){.two-col{grid-template-columns:1fr}}
+    .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    @media(max-width:500px){.three-col{grid-template-columns:1fr 1fr}}
+    .radio-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:4px}
+    .radio-opt{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);cursor:pointer}
+    .radio-opt input{width:15px;height:15px;accent-color:var(--ink2);cursor:pointer}
+    .person-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-bottom:8px;align-items:center}
+    .person-row input{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink);font-family:'Jost',sans-serif;font-size:12px}
+    .person-row button{width:32px;height:36px;border-radius:var(--radius);border:1px solid var(--border2);background:transparent;color:var(--red);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .person-row button:hover{background:var(--red-bg)}
+    .rental-row{display:grid;grid-template-columns:1fr 70px 110px auto;gap:8px;margin-bottom:8px;align-items:center}
+    .rental-row input{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius);background:#fff;color:var(--ink);font-family:'Jost',sans-serif;font-size:12px}
+    .rental-row button{width:32px;height:36px;border-radius:var(--radius);border:1px solid var(--border2);background:transparent;color:var(--red);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .add-row-btn{font-size:12px;color:var(--ink2);background:transparent;border:1px dashed var(--border2);border-radius:var(--radius);padding:7px 14px;cursor:pointer;width:100%;margin-top:6px;transition:background 0.15s}
+    .add-row-btn:hover{background:var(--cream2)}
+    .note-box{background:var(--cream2);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--ink3);line-height:1.7;margin-bottom:1rem;border-left:2px solid var(--ink2)}
+    .err{font-size:11px;color:var(--red);margin-top:4px;display:none}
+    .submit-btn{width:100%;padding:15px;background:var(--ink2);color:#fff;border:none;border-radius:var(--radius);font-family:'Jost',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-top:1.5rem}
+    .submit-btn:hover{background:var(--ink)}
+    .submit-btn:disabled{opacity:0.6;cursor:not-allowed}
+    .success{display:none;text-align:center;padding:3rem 1rem}
+    .success-icon{font-size:44px;margin-bottom:16px}
+    .success h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--ink);margin-bottom:10px}
+    .divider{width:40px;height:1.5px;background:var(--ink2);margin:12px auto}
+    .success p{font-size:13px;color:var(--ink3);line-height:1.8;max-width:400px;margin:0 auto}
+    .success-detail{background:var(--green-bg);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-top:1.5rem;font-size:13px;color:var(--ink);text-align:left;line-height:1.9;border:1px solid var(--ink3)}
+    .footer{text-align:center;margin-top:2rem;font-size:11px;color:var(--ink3);line-height:1.9}
+    .footer a{color:var(--ink2);text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:8px}
+    .table-header{display:grid;grid-template-columns:1fr 70px 110px auto;gap:8px;margin-bottom:6px}
+    .table-header span{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink3)}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <a class="header-brand" href="#">
+    <img src="logo.png" alt="Quinta da Aldeia" onerror="this.style.display='none'">
+    <span class="header-name">Quinta da Aldeia</span>
+  </a>
+</div>
+
+<div class="hero">
+  <h2>Check-list de Casamento</h2>
+  <div class="hero-divider"></div>
+  <p>Por gentileza, preencha este formulário com todos os detalhes do vosso evento. As informações são essenciais para garantir que tudo corra na perfeição no vosso dia especial.</p>
+</div>
+
+<div class="wrap">
+  <div id="the-form">
+
+    <!-- DADOS DO CASAL -->
+    <div class="section">
+      <div class="section-title">Dados do casal</div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Nome da noiva *</label>
+          <input type="text" id="noiva-nome" placeholder="Nome completo">
+          <div class="err" id="e-noiva">Campo obrigatório</div>
+        </div>
+        <div class="fg">
+          <label>Telefone da noiva</label>
+          <input type="tel" id="noiva-tel" placeholder="(00) 9 0000-0000">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Nome do noivo *</label>
+          <input type="text" id="noivo-nome" placeholder="Nome completo">
+          <div class="err" id="e-noivo">Campo obrigatório</div>
+        </div>
+        <div class="fg">
+          <label>Telefone do noivo</label>
+          <input type="tel" id="noivo-tel" placeholder="(00) 9 0000-0000">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="fg">
+          <label>E-mail de contacto *</label>
+          <input type="email" id="email" placeholder="email@exemplo.com">
+          <div class="err" id="e-email">E-mail inválido</div>
+        </div>
+        <div class="fg">
+          <label>Número de convidados</label>
+          <input type="number" id="num-pessoas" placeholder="Ex: 120" min="1">
+        </div>
+      </div>
+    </div>
+
+    <!-- HORÁRIOS -->
+    <div class="section">
+      <div class="section-title">Horários</div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Data de chegada *</label>
+          <input type="date" id="data-chegada">
+          <div class="err" id="e-chegada">Campo obrigatório</div>
+        </div>
+        <div class="fg">
+          <label>Hora de chegada</label>
+          <input type="time" id="hora-chegada" value="10:00">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Data de saída</label>
+          <input type="date" id="data-saida">
+        </div>
+        <div class="fg">
+          <label>Hora de saída</label>
+          <input type="time" id="hora-saida" value="12:00">
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Início do evento</label>
+          <input type="time" id="hora-inicio">
+        </div>
+        <div class="fg">
+          <label>Término previsto do evento</label>
+          <input type="time" id="hora-termino">
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGÍSTICA DO EVENTO -->
+    <div class="section">
+      <div class="section-title">Logística do evento</div>
+      <div class="fg">
+        <label>Local do altar / cerimónia</label>
+        <input type="text" id="local-altar" placeholder="Ex: Jardim principal, varanda, salão">
+      </div>
+      <div class="fg">
+        <label>Local(ais) onde será servido o buffet</label>
+        <input type="text" id="local-buffet" placeholder="Ex: Varanda e salão principal">
+      </div>
+      <div class="fg">
+        <label>Local(ais) do(s) toldo(s)</label>
+        <input type="text" id="local-toldos" placeholder="A definir com o Encarregado">
+      </div>
+      <div class="fg">
+        <label>Música / Som</label>
+        <div class="note-box">⚠️ A música deve obedecer à Lei do Silêncio — som moderado a partir das 22h. Proibido o uso de "paredão".</div>
+        <textarea id="musica-info" placeholder="Tipo de música, nome do DJ ou banda, equipamento necessário, horário de chegada…"></textarea>
+      </div>
+    </div>
+
+    <!-- PREPARAÇÃO DO CASAL -->
+    <div class="section">
+      <div class="section-title">Preparação do casal</div>
+      <div class="fg">
+        <label>A noiva vai se arrumar na casa?</label>
+        <div class="radio-row">
+          <label class="radio-opt"><input type="radio" name="noiva-casa" value="sim"> Sim</label>
+          <label class="radio-opt"><input type="radio" name="noiva-casa" value="nao" checked> Não</label>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Horário de uso da banheira</label>
+        <input type="time" id="hora-banheira">
+        <div class="hint">A banheira leva aproximadamente 1 hora para encher e aquecer</div>
+      </div>
+      <div class="fg">
+        <label>Recomendações para preparação da noiva</label>
+        <textarea id="rec-noiva" placeholder="Horário de chegada da equipa de beleza, necessidades especiais, número de pessoas…"></textarea>
+      </div>
+      <div class="fg" style="margin-top:1rem">
+        <label>O noivo vai se arrumar na casa?</label>
+        <div class="radio-row">
+          <label class="radio-opt"><input type="radio" name="noivo-casa" value="sim"> Sim</label>
+          <label class="radio-opt"><input type="radio" name="noivo-casa" value="nao" checked> Não</label>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Recomendações para preparação do noivo</label>
+        <textarea id="rec-noivo" placeholder="Horário de chegada, necessidades especiais…"></textarea>
+      </div>
+    </div>
+
+    <!-- PESSOAS AUTORIZADAS -->
+    <div class="section">
+      <div class="section-title">Pessoas autorizadas</div>
+      <p style="font-size:12px;color:var(--ink3);margin-bottom:1rem;line-height:1.7">Lista de pessoas autorizadas a aceder ao espaço para montagem, serviços e desmontagem.</p>
+      <div id="pessoas-autorizadas">
+        <div class="person-row">
+          <input type="text" placeholder="Nome / Função (ex: DJ João Silva)">
+          <input type="tel" placeholder="Telefone">
+          <button onclick="removePessoa(this)" title="Remover">✕</button>
+        </div>
+      </div>
+      <button class="add-row-btn" onclick="addPessoa()">+ Adicionar pessoa</button>
+      <div class="fg" style="margin-top:1rem">
+        <label>Responsável pela inspeção de recebimento e entrega do espaço</label>
+        <input type="text" id="pessoa-inspecao" placeholder="Nome completo">
+      </div>
+    </div>
+
+    <!-- STAFF DA QUINTA -->
+    <div class="section">
+      <div class="section-title">Contratação de staff da quinta</div>
+      <div class="two-col">
+        <div class="fg">
+          <label>Contratação de Rita?</label>
+          <div class="radio-row">
+            <label class="radio-opt"><input type="radio" name="rita" value="sim"> Sim</label>
+            <label class="radio-opt"><input type="radio" name="rita" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Contratação de Manoel?</label>
+          <div class="radio-row">
+            <label class="radio-opt"><input type="radio" name="manoel" value="sim"> Sim</label>
+            <label class="radio-opt"><input type="radio" name="manoel" value="nao" checked> Não</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALUGUEL DE MÓVEIS -->
+    <div class="section">
+      <div class="section-title">Aluguel de móveis e utensílios</div>
+      <div class="table-header">
+        <span>Descrição do item</span>
+        <span>Qtd.</span>
+        <span>Valor total</span>
+        <span></span>
+      </div>
+      <div id="rental-rows">
+        <div class="rental-row">
+          <input type="text" placeholder="Ex: Cadeiras Tiffany">
+          <input type="number" placeholder="0" min="0">
+          <input type="text" placeholder="R$ 0,00">
+          <button onclick="removeRental(this)" title="Remover">✕</button>
+        </div>
+      </div>
+      <button class="add-row-btn" onclick="addRental()">+ Adicionar item</button>
+    </div>
+
+    <!-- OBSERVAÇÕES -->
+    <div class="section">
+      <div class="section-title">Observações gerais</div>
+      <div class="fg" style="margin-bottom:0">
+        <label>Alguma informação adicional ou pedido especial?</label>
+        <textarea id="obs" placeholder="Partilhe qualquer detalhe que considerem importante para o vosso evento — necessidades especiais, preferências, pedidos específicos…" style="min-height:110px"></textarea>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Enviar check-list</button>
+
+    <div class="footer" style="margin-top:1.5rem">
+      <a href="https://www.instagram.com/quintadaaldeia/" target="_blank">📷 @quintadaaldeia</a>
+    </div>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="success" id="success-state">
+    <div class="success-icon">💍</div>
+    <h2>Check-list enviado com sucesso!</h2>
+    <div class="divider"></div>
+    <p>Obrigado por preencher o check-list. A equipa da Quinta da Aldeia irá rever todas as informações e entrar em contacto caso seja necessário esclarecer algum detalhe.</p>
+    <div class="success-detail">
+      ✅ Informações recebidas e guardadas<br>
+      📧 Confirmação enviada para o vosso e-mail<br>
+      🌿 A nossa equipa está a preparar tudo para o vosso dia especial!
+    </div>
+    <div style="margin-top:1.5rem">
+      <a href="https://www.instagram.com/quintadaaldeia/" target="_blank" style="font-size:13px;color:var(--ink2);text-decoration:none;padding:8px 16px;border:1px solid var(--border2);border-radius:var(--radius)">📷 Siga-nos no Instagram</a>
+    </div>
+  </div>
+</div>
+
+<script src="config.js" onerror="window.SCRIPT_URL=''"></script>
+<script>
+function addPessoa(){
+  var c=document.createElement('div');c.className='person-row';
+  c.innerHTML='<input type="text" placeholder="Nome / Função"><input type="tel" placeholder="Telefone"><button onclick="removePessoa(this)" title="Remover">✕</button>';
+  document.getElementById('pessoas-autorizadas').appendChild(c);
+}
+function removePessoa(btn){
+  var rows=document.querySelectorAll('#pessoas-autorizadas .person-row');
+  if(rows.length>1) btn.closest('.person-row').remove();
+}
+function addRental(){
+  var c=document.createElement('div');c.className='rental-row';
+  c.innerHTML='<input type="text" placeholder="Descrição do item"><input type="number" placeholder="0" min="0"><input type="text" placeholder="R$ 0,00"><button onclick="removeRental(this)" title="Remover">✕</button>';
+  document.getElementById('rental-rows').appendChild(c);
+}
+function removeRental(btn){
+  var rows=document.querySelectorAll('#rental-rows .rental-row');
+  if(rows.length>1) btn.closest('.rental-row').remove();
+}
+
+function getPessoas(){
+  return Array.from(document.querySelectorAll('#pessoas-autorizadas .person-row')).map(function(row){
+    var inputs=row.querySelectorAll('input');
+    return (inputs[0].value+' — '+inputs[1].value).trim();
+  }).filter(function(s){return s&&s!=='—';}).join(' | ');
+}
+
+function getRentals(){
+  return Array.from(document.querySelectorAll('#rental-rows .rental-row')).map(function(row){
+    var inputs=row.querySelectorAll('input');
+    return (inputs[0].value+' ('+inputs[1].value+'x) '+inputs[2].value).trim();
+  }).filter(function(s){return s&&s!=='()';}).join(' | ');
+}
+
+function submitForm(){
+  var noiva=document.getElementById('noiva-nome').value.trim();
+  var noivo=document.getElementById('noivo-nome').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var chegada=document.getElementById('data-chegada').value;
+  var valid=true;
+
+  document.getElementById('e-noiva').style.display=!noiva?'block':'none'; if(!noiva) valid=false;
+  document.getElementById('e-noivo').style.display=!noivo?'block':'none'; if(!noivo) valid=false;
+  document.getElementById('e-email').style.display=(!email||!email.includes('@'))?'block':'none';
+  if(!email||!email.includes('@')) valid=false;
+  document.getElementById('e-chegada').style.display=!chegada?'block':'none'; if(!chegada) valid=false;
+
+  if(!valid){
+    var fe=document.querySelector('.err[style*="block"]');
+    if(fe) fe.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
+  var btn=document.getElementById('submit-btn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span>Enviando…';
+
+  var payload={
+    id:'cl_'+Date.now(),
+    submitted_at:new Date().toISOString(),
+    noiva_nome:noiva,
+    noiva_tel:document.getElementById('noiva-tel').value,
+    noivo_nome:noivo,
+    noivo_tel:document.getElementById('noivo-tel').value,
+    email:email,
+    num_pessoas:document.getElementById('num-pessoas').value,
+    data_chegada:chegada,
+    hora_chegada:document.getElementById('hora-chegada').value,
+    data_saida:document.getElementById('data-saida').value,
+    hora_saida:document.getElementById('hora-saida').value,
+    hora_inicio:document.getElementById('hora-inicio').value,
+    hora_termino:document.getElementById('hora-termino').value,
+    local_altar:document.getElementById('local-altar').value,
+    local_buffet:document.getElementById('local-buffet').value,
+    local_toldos:document.getElementById('local-toldos').value,
+    musica_info:document.getElementById('musica-info').value,
+    noiva_casa:document.querySelector('input[name="noiva-casa"]:checked')?.value||'nao',
+    hora_banheira:document.getElementById('hora-banheira').value,
+    rec_noiva:document.getElementById('rec-noiva').value,
+    noivo_casa:document.querySelector('input[name="noivo-casa"]:checked')?.value||'nao',
+    rec_noivo:document.getElementById('rec-noivo').value,
+    pessoas_autorizadas:getPessoas(),
+    pessoa_inspecao:document.getElementById('pessoa-inspecao').value,
+    rita:document.querySelector('input[name="rita"]:checked')?.value||'nao',
+    manoel:document.querySelector('input[name="manoel"]:checked')?.value||'nao',
+    rental_items:getRentals(),
+    obs:document.getElementById('obs').value,
+  };
+
+  // Submit to Apps Script
+  if(window.SCRIPT_URL&&window.SCRIPT_URL!=='YOUR_APPS_SCRIPT_URL_HERE'){
+    try{
+      var params=new URLSearchParams(Object.assign({action:'submitChecklist'},payload));
+      fetch(window.SCRIPT_URL+'?'+params.toString(),{method:'GET',mode:'no-cors'}).catch(function(){});
+    }catch(e){console.warn('Submission error:',e);}
+  }
+
+  document.getElementById('the-form').style.display='none';
+  document.getElementById('success-state').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
