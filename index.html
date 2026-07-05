@@ -318,7 +318,7 @@ function submitForm(){
   document.getElementById('success-state').style.display='block';
   document.getElementById('success-summary').innerHTML=
     '<strong>Resumo do seu pedido:</strong><br>'+
-    '📅 Data preferida: '+fmtDate(data)+(payload.data_alt?'&nbsp;·&nbsp;Alternativa: '+fmtDate(payload.data_alt):')+'<br>'+
+    '📅 Data preferida: '+fmtDate(data)+(payload.data_alt?' &nbsp;·&nbsp; Alternativa: '+fmtDate(payload.data_alt):'')+' <br>'+
     '🎉 Tipo de evento: '+selTipo+'<br>'+
     '👥 Convidados: '+selConvidados+'<br>'+
     (payload.servicos?'✅ Serviços: '+payload.servicos+'<br>':'')+
